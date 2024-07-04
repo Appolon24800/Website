@@ -1,9 +1,3 @@
-const song = {
-  './assets/index/sounds/hurts me.mp3': '0RBw4ODUQPO4cuAOZtBGga',
-  './assets/index/sounds/okay..mp3': '7FIEearfOP221QvSsQ8cKB',
-  './assets/index/sounds/bécane - a colors show.mp3': '3oUEzTAoOxqZHN4xiqTGqJ',
-}
-
 const note = [
   "This guy cool",
   "note.exe",
@@ -16,7 +10,9 @@ const note = [
   "Moon > Rise ?",
   "Lunar > Badlion",
   "Astolfo > Rise ?",
-  "fukc"
+  "fukc",
+  "Check BwT: https://appolon.dev/bwt/",
+  "Chech SelfCTRL: https://selfctrl.appolon.dev/"
 ]
 
 const titles = [
@@ -28,17 +24,8 @@ const titles = [
   "lon.dev", "olon.dev", "polon.dev", "ppolon.dev", "Appolon.dev"
 ]
 
-
-const links = document.querySelectorAll('.typed-text a')
-const slider = document.getElementById("sliderv");
-const musiclink = document.getElementById("music");
-const spath = Object.keys(song)
-const sid = Object.values(song) 
-
-let music;
-let musicname;
-let musicid;
-
+var musicData;
+var music;
 
 function title() {
   i = 0;
@@ -113,7 +100,7 @@ function ntf(message) {
 
   var notification = document.createElement("div");
   notification.className = "notification";
-  notification.innerHTML = message;
+  notification.innerText = message;
 
   document.body.appendChild(notification);
   setTimeout(function() {
@@ -182,7 +169,6 @@ function autoplayfix() {
           document.body.removeChild(bg);
           document.body.style.cursor = "auto";
           body.forEach(element => document.body.appendChild(element));
-          initmusic();
           randomnote();
           spotifyinit();
           perror();
@@ -201,22 +187,6 @@ function autoplayfix() {
   document.addEventListener('keypress', keyPressHandler);
 }
 
-
-function initmusic() {
-  if(!musiclink) { return }
-  const randomi = Math.floor(Math.random() * spath.length);
-  const path = spath[randomi];
-  const match = path.match(/\/([^/]+)\.\w+$/);
-  musicname = match ? match[1] : "Unknown";
-  musicid = sid[randomi]
-  music = new Audio(path);
-  music.volume = 0.2;
-  musiclink.innerHTML = `<a href="https://open.spotify.com/track/${musicid}" id="music">[Music]</a>`
-  music.play()
-  ntf('Listening to "' + musicname + '"');
-}
-
-
 function changevolume(value) {
   if (!music.paused) {
       music.volume = value / 100;
@@ -230,7 +200,7 @@ function pause() {
       ntf('Music paused');
   } else {
       music.play()
-      ntf('Listening to "' + musicname + '"');
+      ntf('Listening to "' + musicData["Track"] + '"');
   }
 }
 
@@ -240,35 +210,34 @@ function spotifyinit() {
     req = fetch('https://appolon.dev/api/index/spotify')
     .then(response => response.json())
     .then(data => {
-      if (data['Track'] == undefined || data["Playing"] == false) {
-        if(!music) {
-          SpotifyDIV.remove()
-          return
-        }
-        SpotifyE.innerHTML = `<iframe class="spotifyembed" src="https://open.spotify.com/embed/track/${musicid}?utm_source=generator&theme=0" width="100%" height="100" frameBorder="0" loading="lazy"></iframe>`
-        SpotifyDIV.querySelector('.category-title').textContent = 'You are listening'
-            return
-        }
-      SpotifyE.innerHTML = `<iframe class="spotifyembed" src="https://open.spotify.com/embed/track/${data['TrackID']}?utm_source=generator&theme=0" width="100%" height="100" frameBorder="0" loading="lazy"></iframe>`
-      })
+      if (!data || data['Track'] == undefined || data["Playing"] == false) {
+        document.getElementById("track").innerHTML = ``
+        SpotifyDIV.remove()
+      } else {
+        musicData = data
+        SpotifyE.innerHTML = `<iframe class="spotifyembed" src="https://open.spotify.com/embed/track/${data['TrackID']}?utm_source=generator&theme=0" width="100%" height="100" frameBorder="0" loading="lazy"></iframe>`
+        music = new Audio(data["Preview"]);
+        music.volume = 0.2;
+        document.getElementById("track").innerHTML = `<br>${data.Artists.map(artist => `<a href=\"https://open.spotify.com/artist/${artist.ID}\"> ` + artist.Name + "</a>")} - ${data["Track"]} <a href="https://open.spotify.com/track/${data['TrackID']}" id="music">[Music]</a>`
+        music.play()
+        ntf('Listening to "' + data["Track"] + '"');
+      }
+    })
 }
 
-if (slider) {
-  slider.addEventListener("change", function() {
-      changevolume(slider.value)
-  })
-}
-
+links = document.querySelectorAll('.typed-text a')
 if (links) {
-  links.forEach(pause => {
+  links.forEach(link => {
     const hovers = new Audio('https://appolon.dev/api/download/click.wav');
-    pause.addEventListener('mouseenter', () => {
+    link.addEventListener('mouseenter', () => {
         hovers.play();
     });
   });
 }
 
-
+document.getElementById("musicButton").addEventListener('click', () => {
+  pause()
+});
 
 autoplayfix();
 title();
