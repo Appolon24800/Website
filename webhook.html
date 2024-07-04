@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Webhook deleter</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish&display=swap">
+    <script src="./assets/webhook/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="./assets/webhook/css/style.css">
+  </head>
+  <body>
+    
+	<h1>appolon.dev/webhook</h1>
+    <div>
+      <textarea placeholder="Webhook url here"
+                class="stextarea" 
+                cols="125" rows="1" 
+                onkeydown="if (event.key === 'Enter' || event.keyCode === 13) { deletewh(this.value); setTimeout(() => { this.value = ''; }, 0); }"
+                onkeydown="if (event.key === 'Enter') { deletewh(this.value); setTimeout(() => { this.value = ''; }, 0); }">
+      </textarea>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,41 @@
+body {
+    background: url('https://appolon.dev/api/download/renderbg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    animation: slidein 100s infinite alternate;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    overflow: scroll;
+}
+
+h1 { 
+    color: #111; 
+    font-family: 'Helvetica Neue', sans-serif; 
+    font-weight: bold; 
+    line-height: 1; 
+    text-align: center; 
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+p {
+    font-family: 'Courier';
+    color: rgba(112, 0, 0, 1);
+    font-size: 60px;
+    max-width: 70%;
+    word-wrap: break-word;
+    text-shadow: 2px 2px 5px rgba(112, 0, 0, 1);
+    transition: all 0.3s ease-in-out;
+}
+
+p:hover {
+    text-shadow: 6px 6px 5px rgba(112, 0, 0, 1);
+}
+

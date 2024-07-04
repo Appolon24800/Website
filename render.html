@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TEXT Renderer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish&display=swap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./assets/render/css/css/style.css">
+  </head>
+  <body>
+	<h1>appolon.dev/render</h1>
+    <div>
+      <p id="rendered-text" data-clipboard-text="rendered-text"></p>
+    </div>
+
+    <script>
+      var urlParams = new URLSearchParams(window.location.search);
+      var text = urlParams.get('text');
+      
+      if (!text) {
+        window.location.href = '/render.html?text=Text';
+      } else {
+        var renderedText = document.getElementById('rendered-text');
+        renderedText.innerHTML = text;
+        renderedText.setAttribute("data-clipboard-text", text);
+      }
+  
+      var clipboard = new ClipboardJS('#rendered-text');
+      document.getElementById("metaurl").innerHTML = "https://appolon.dev/render?text=" + text;
+    </script>
+    
+    <meta content="appolon.dev/render" property="og:title" />
+    <meta content="#rendered-text" property="og:description" />
+    <meta id="metaurl" content="" property="og:url" />
+    <meta content="#43B581" data-react-helmet="true" name="theme-color" />
+  </body>
+</html>

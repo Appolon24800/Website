@@ -1,0 +1,420 @@
+@import url("../font/style.css");
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Whitney", sans-serif;
+    box-sizing: border-box;
+}
+
+.typed-text {
+    padding-right: 10px;
+    background-size: 120%;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: right;
+    direction: rtl;
+    overflow-x: hidden;
+    font-family: monospace;
+    font-size: large;
+    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+}
+
+.spotifyembed {
+    height: 80px;
+}
+
+.typed-text a {
+    animation: aanim 3s infinite;
+    color: #cc0000;
+    text-decoration: none;
+    text-align: right;
+    direction: rtl;
+    overflow-x: hidden;
+    font-family: monospace;
+}
+
+.typed-text .god {
+    animation: godanim 3s infinite;
+}
+
+.typed-text a:hover {
+    animation: ahover 0.3s linear;
+    animation: aanim 3s infinite;
+    padding-right: 20px;
+}
+
+
+@keyframes typing {
+    from {
+        width: 0%
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+@keyframes ahover {
+    from {
+        padding-right: 10px
+    }
+
+    to {
+        padding-right: 20px;
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: orange;
+    }
+}
+
+@keyframes godanim {
+    0% {
+        color: gold;
+        text-shadow: 0 0 5px rgb(177, 150, 0);
+    }
+
+    50% {
+        color: gold;
+        text-shadow: 0 0 10px rgb(255, 225, 54);
+    }
+
+    100% {
+        color: gold;
+        text-shadow: 0 0 5px rgb(104, 88, 0);
+    }
+}
+
+@keyframes aanim {
+    0% {
+        color: rgb(255, 0, 0);
+        text-shadow: 0 0 5px rgb(255, 0, 0);
+    }
+
+    50% {
+        color: rgb(210, 0, 0);
+        text-shadow: 0 0 10px rgb(235, 0, 0);
+    }
+
+    100% {
+        color: rgb(235, 0, 0);
+        text-shadow: 0 0 5px rgb(255, 0, 0);
+    }
+}
+
+html {
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    background: url('https://appolon.dev/api/download/renderbg.webp');
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+body {
+    margin: 0;
+    max-width: 120%;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background-color: #6d5cff;
+    padding: 10px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 0.85rem;
+    transition: 0.2s ease-in-out;
+    margin-top: 12px;
+}
+
+.btn:hover {
+    background-color: #4752c4;
+}
+
+.card-container {
+    animation: fadeIn 0.5s ease-in-out;
+    display: flex;
+    border-radius: 9px !important;
+    align-items: center;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    margin-left: 200px;
+}
+
+.card {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    position: fixed;
+    margin: auto;
+    overflow-y: hidden;
+    background: #292b2f;
+    width: 345px;
+    max-height: 95%;
+    height: max-content;
+    border-radius: 9px;
+    box-shadow: 0px 0px 15px 6px #000000 !important;
+    transform: translateX(-30%);
+}
+
+.card::-webkit-scrollbar {
+    display: none;
+}
+
+.card-header .banner-img {
+    width: 100%;
+    height: 115px;
+    background: url('https://appolon.dev/api/download/sky.webp');
+    background-size: 200% auto;
+    border-radius: 6px 6px 0 0;
+    animation: moveBackground 2000000s linear infinite;
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position:70000000% 0;
+    }
+}
+
+.card-body {
+    padding: 15px;
+    position: relative;
+}
+
+.card-body .profile-header {
+    overflow: auto;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: calc(100% - 30px);
+    top: -50px;
+}
+
+.card-body .profile-header .profil-logo {
+    position: relative;
+    border: 6px solid #292b2f;
+    border-radius: 50%;
+}
+
+.card-body .profile-header .profil-logo img {
+    display: block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.card-body .profile-header .profil-logo:hover::before {
+    opacity: 1;
+}
+
+.card-body .profile-body {
+    background: #18191c;
+    border-radius: 6px;
+    padding: 13px;
+    margin-top: 40px;
+}
+
+.card-body .profile-body .username {
+    color: #eeeeee;
+    margin-bottom: 13px;
+    font-weight: 600;
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card-body .profile-body hr {
+    border: none;
+    border-top: 0.5px solid #33353b;
+}
+
+.card-body .profile-body .category-title {
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+}
+
+.card-body .profile-body .basic-infos {
+    margin-bottom: 14px;
+    margin-top: 12px;
+}
+
+.card-body .profile-body .basic-infos p {
+    color: #bdbebf;
+    font-size: 0.9rem;
+}
+
+.card-body .profile-body .basic-infos p a {
+    color: #02a5e6;
+    text-decoration: none;
+}
+
+.card-body .profile-body .basic-infos p a:hover {
+    text-decoration: underline;
+}
+
+.notification {
+    color: white;
+    position: fixed;
+    right: 10px;
+    top: -100px;
+    padding: 10px;
+    opacity: 0;
+    transition: top 0.5s, opacity 0.5s;
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6.5px);
+}
+
+.card-body .profile-body .note textarea {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    min-height: 30px;
+    color: #e0e0e0;
+    resize: none;
+    font-size: 0.8rem;
+    border-radius: 3px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.card-body .profile-body .message input {
+    background: transparent;
+    outline: none;
+    border: 1.2px solid #4b4b4b;
+    padding: 13px;
+    width: 100%;
+    border-radius: 4px;
+    color: #eeeeee;
+    margin-top: 14px;
+}
+
+.nitro-card {
+    /*background-image: url(https://appolon.dev/api/download/redsky.jpg);
+    background-size: cover;
+    background-position: center;
+    border: 6px solid #300000;
+    background-repeat: no-repeat;*/
+    background: linear-gradient(0, #300000, #002325);
+    
+}
+
+.nitro-card:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -5px;
+    border-radius: 122px;
+}
+
+.nitro-card .card-body .profile-body {
+    background: #18191c91;
+}
+
+.nitro-card .card-body .profile-header .profil-logo {
+    position: relative;
+    border-color: transparent;
+    z-index: 0;
+}
+
+.nitro-card .card-body .profile-header .profil-logo:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -4px;
+    border-radius: 50%;
+    background-color: #000000;
+}
+
+.nitro-card .card-body .profile-body {
+    background: #18191c4d;
+    border: 1px solid #3f4149;
+    padding: 10px;
+    max-width: 100%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 935px) {
+
+    .typed-text {
+        height: 0;
+    }
+    
+    .card-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0px 0px 15px 6px #000000 !important;
+        margin-left: 0;
+    }
+    
+    .card {
+        max-height: 95vh;
+        position: relative;
+        margin: auto;
+        width: 345px;
+        overflow-y: auto;
+        max-height: auto;
+        transform: translateX(0);
+    }
+
+}
+
+@media (max-height: 935px) {
+
+    .card {
+        overflow-y: auto;
+    }
+
+}

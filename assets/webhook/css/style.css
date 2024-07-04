@@ -1,0 +1,58 @@
+@import url("../../index/font/style.css");
+
+body {
+    
+    background: url('https://appolon.dev/api/download/renderbg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: "Whitney", sans-serif;
+    animation: slidein 100s infinite alternate;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+}
+
+.notification {
+    color: white;
+    position: fixed;
+    right: 10px;
+    top: -100px;
+    padding: 10px;
+    opacity: 0;
+    transition: top 0.5s, opacity 0.5s;
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6.5px);
+    height: auto;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+h1 { 
+    color: #111; 
+    font-family: 'Helvetica Neue', sans-serif; 
+    font-weight: bold; 
+    line-height: 1; 
+    text-align: center; 
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+.stextarea {
+    outline: none;
+    resize: none;
+    padding: 13px;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 14px;
+    background: #424242;
+    border: 3px solid #333;
+    padding: 8px;
+    border-radius: 5px;
+}
