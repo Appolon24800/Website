@@ -226,11 +226,11 @@ function spotifyinit() {
 }
 
 links = document.querySelectorAll('.typed-text a')
+const hoverSound = new Audio('https://appolon.dev/api/download/click.wav')
 if (links) {
   links.forEach(link => {
-    const hovers = new Audio('https://appolon.dev/api/download/click.wav');
     link.addEventListener('mouseenter', () => {
-        hovers.play();
+        hoverSound.play();
     });
   });
 }
